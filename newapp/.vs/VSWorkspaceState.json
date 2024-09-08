@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\bin\\Release",
+    "\\bin\\Release\\net8.0",
+    "\\Controller",
+    "\\wwwroot\\static",
+    "\\wwwroot\\static\\v2",
+    "\\wwwroot\\static\\v2\\lib"
+  ],
+  "SelectedNode": "\\Controller\\TestController.cs",
+  "PreviewInSolutionExplorer": false
+}

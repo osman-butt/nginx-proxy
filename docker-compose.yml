@@ -1,0 +1,37 @@
+services:
+  legacy-python:
+    build:
+      context: ./whoknows_variations
+      dockerfile: Dockerfile
+    container_name: legacy-python-container
+    networks:
+      - webnet
+    expose:
+      - "8080"  # Expose port to other services in the same network
+
+  razor-pages:
+    build:
+      context: ./newapp
+      dockerfile: Dockerfile
+    container_name: razor-pages-container
+    networks:
+      - webnet
+    expose:
+      - "5274"  # Expose port to other services in the same network
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx-container
+    ports:
+      - "80:80"  # Map port 80 of the host to port 80 of the Nginx container
+    depends_on:
+      - legacy-python
+      - razor-pages
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
